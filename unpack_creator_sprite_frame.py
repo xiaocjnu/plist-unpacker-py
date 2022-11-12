@@ -56,6 +56,12 @@ def gen_png_from_spriteframe(spriteframe_filepath, texture_filepath, source_text
     subMeta["trimY"] = 0
     subMeta["rawWidth"] = subMeta["width"]
     subMeta["rawHeight"] = subMeta["height"]
+
+    subMetaName = os.path.basename(texture_filepath)
+    subMetaName = subMetaName.split(".")[0]
+    meta_object["subMetas"] = {
+        subMetaName: subMeta
+    }
     with open(meta_file_path, "w") as f:
         json.dump(meta_object, f, indent=2)
 
